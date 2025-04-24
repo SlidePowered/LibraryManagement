@@ -4,10 +4,12 @@ void Library::addBook(Book book) {
     this->books.push_back(book);
 }
 
-void Library::removeBook(Book book) {
-    for(auto i = books.begin(); i != books.end(); ++i){
-        if(*i == book){
-            this->books.erase(i);
+void Library::removeBook(const Book book) {
+    for (auto i = books.begin(); i != books.end(); ) {
+        if (*i == book) {
+            i = books.erase(i);
+        } else {
+            ++i;
         }
     }
 }
